@@ -23,7 +23,7 @@ def add():
 @app.route("/data")
 def data():
     data = cur.execute("select * from data")
-    return render_template("data.html",data=data)
+    return render_template("data.html",item=data.fetchall())
 
 
 if __name__ == "__main__":
