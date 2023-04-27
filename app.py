@@ -5,10 +5,18 @@ app = Flask(__name__)
 db = connect("cart.db",check_same_thread=False)
 cur = db.cursor()
 cur.execute("CREATE TABLE IF NOT EXISTS data(Item varchar(50),Amount int,Price float)")
-cur.close()
 db.commit()
+cur.close()
 
 @app.route("/")
+def login():
+    return render_template("index.html")
+
+@app.route("/create")
+def create():
+    return render_template("index.html")
+
+@app.route("/home")
 def home():
     return render_template("index.html")
 
