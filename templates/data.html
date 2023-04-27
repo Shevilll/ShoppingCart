@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block title %}
+    <title>Test</title>
+{% endblock %}
+
+{% block body %}
+    {% for i,j in data %}
+        <h1>Hello {{i}}, {{j}}</h1>
+    {% endfor %}
+{% endblock %}
