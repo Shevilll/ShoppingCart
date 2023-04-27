@@ -4,22 +4,30 @@
 {% endblock %}
 
 {% block body %}
-    {% if item %}
-        <table>
-            <thead>
-                <th>Item 🍉</th>
-                <th>Amount 🤔</th>
-                <th>Price 💰</th>
-            </thead>
-            {% for i,j,k in item %}
-                <tbody>
-                    <td>{{i}}</td>
-                    <td>{{j}}</td>
-                    <td>{{k}}</td>
-                </tbody>
-                {% endfor %}
-        </table>
-    {% else %}
-        <h1>Your cart is EMPTY!</h1>
-    {% endif %}
+    <div class="table">
+        {% if item %}
+            <table>
+                <thead>
+                    <th>Item 🍉</th>
+                    <th>Amount 🤔</th>
+                    <th>Price 💰</th>
+                    <th>Remove ❌</th>
+                </thead>
+                {% for i,j,k in item %}
+                    <tbody>
+                        <td>{{i}}</td>
+                        <td>{{j}}</td>
+                        <td>{{k}}</td>
+                        <form action="/remove/{{i}},{{j}},{{k}}" method="post">
+                            <td>
+                                <button>❌</button>
+                            </td>
+                        </form>
+                    </tbody>
+                    {% endfor %}
+            </table>
+        {% else %}
+            <h1>Your cart is EMPTY!</h1>
+        {% endif %}
+    </div>
 {% endblock %}

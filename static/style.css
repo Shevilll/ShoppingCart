@@ -46,3 +46,21 @@ input[type=number]::-webkit-outer-spin-button {
     border: 2px solid;
     border-radius: 10px;
 }
+.table{
+    display: grid;
+    background-color: beige;
+    margin-top: 20px;
+    border: 2px solid;
+    border-radius: 15px;
+    padding: 10px;
+}
+th{
+    text-align: center;
+    margin: auto;
+}
+tr{
+    text-align: center;
+    margin: auto;
+    font-size: 150%;
+
+}
