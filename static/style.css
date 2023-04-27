@@ -11,10 +11,11 @@ body{
     text-align: center;
 }
 .head{
+    width: max-content;
     color:black;
-    padding: 0px;
     display:block;
     font-size: 20px;
+    margin: auto;
 }
 .input{
     display: block;
