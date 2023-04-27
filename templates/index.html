@@ -5,10 +5,11 @@
 
 {% block body %}
     <div id="input">
-        <form action="/data" method="post">
+        <form action="/add" method="post">
             <input class="input" type="text" name="name" autofocus placeholder="Enter Item" required autocomplete="off">
             <input class="input" type="number" min="0" name="amount" autofocus placeholder="Enter Amount" required autocomplete="off">
-            <input class="input" type="number" min="0" name="price" autofocus placeholder="Enter Price" required autocomplete="off" >
+            <input class="input" type="number" min="0" name="price" autofocus placeholder="Enter Price" required autocomplete="off">
+            <button id="add">Add to Cart</button>
         </form>
     </div>
 {% endblock %}
