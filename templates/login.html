@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+<title>Login</title>
+{% endblock %}
+
+{% block body %}
+<div id="input">
+    {% if error %}
+        <h1>{{ error }}</h1>
+    {% else %}
+    <form action="/" method="post">
+        <input class="input" type="text" name="username" autofocus placeholder="Enter Username 👤" required autocomplete="off">
+        <input class="input" type="password" min="0" name="password" autofocus placeholder="Enter Password 🤐" required autocomplete="off">
+        <button id="add">Login 🥳</button>
+    </form>
+    {% endif %}
+</div>
+{% endblock %}
