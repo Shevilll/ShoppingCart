@@ -6,7 +6,7 @@ db = connect("cart.db",check_same_thread=False)
 users = connect("users.db",check_same_thread=False)
 users.cursor().execute("CREATE TABLE IF NOT EXISTS users(username varchar(50),password varchar(50))")
 users.commit()
-logged = None
+logged = False
 
 
 @app.route("/",methods=["POST","GET"])
@@ -48,7 +48,7 @@ def create():
             return render_template("login.html")
         return render_template("createaccount.html")
     except:
-        error = "Account already exists!! Just Login"
+        error = "Account already exists!!"
         return render_template("createaccount.html",error=error)
 
 @app.route("/home",methods=["POST","GET"])
