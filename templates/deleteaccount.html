@@ -7,7 +7,9 @@
 {% block body %}
 <div id="input">
     {% if error %}
-        <h1>{{ error }}</h1>
+        <div class="table">
+            <h1 style="text-align: center;">{{ error }}</h1>
+        </div>
     {% else %}
         <form action="/delete" method="post">
             <input class="input" type="text" name="dusername" autofocus placeholder="Enter Username 👤" required autocomplete="off">
