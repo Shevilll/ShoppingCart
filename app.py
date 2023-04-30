@@ -1,8 +1,8 @@
-from flask import Flask,render_template,request
-from sqlite3 import connect
+from flask import Flask,render_template,request,redirect,url_for
+from sqlite3 import connect, OperationalError
 
 app = Flask(__name__)
-db = connect("cart.db",check_same_thread=False)
+cart = connect("cart.db",check_same_thread=False)
 users = connect("users.db",check_same_thread=False)
 users.cursor().execute("CREATE TABLE IF NOT EXISTS users(username varchar(50),password varchar(50))")
 users.commit()
@@ -37,11 +37,11 @@ def create():
         error = "Username must begin with text!!"
         return render_template("createaccount.html",error=error)
     cpassword = request.form.get("cpassword")
-    cur = db.cursor()
+    cur = cart.cursor()
     try:
         if cusername != None and cpassword != None:
             cur.execute(f"CREATE TABLE {(str(cusername))+(str(cpassword))} (Item varchar(50),Amount int,Price float)")
-            db.commit()
+            cart.commit()
             cur.close()
             users.cursor().execute("INSERT INTO users VALUES(?, ?)",(cusername,cpassword))
             users.commit()
@@ -51,6 +51,23 @@ def create():
         error = "Account already exists!!"
         return render_template("createaccount.html",error=error)
 
+@app.route("/delete",methods=["POST","GET"])
+def delete():
+    dusername = request.form.get("dusername")
+    dpassword = request.form.get("dpassword")
+    try:
+        if dusername != None and dpassword != None:
+            users.cursor().execute("DELETE FROM users WHERE username=? and password=?",(str(dusername),str(dpassword)))
+            users.commit()
+            cart.cursor().execute(f"DROP TABLE {dusername+dpassword}")
+            cart.commit()
+
+            return redirect(url_for("login"))
+        return render_template("deleteaccount.html")
+    except OperationalError:
+        error = "User doesn't exist"
+        return render_template("deleteaccount.html",error=error)
+
 @app.route("/home",methods=["POST","GET"])
 def home():
     if logged:
@@ -59,19 +76,19 @@ def home():
 
 @app.route("/add",methods=["POST","GET"])
 def add():
-    cur = db.cursor()
+    cur = cart.cursor()
     name = request.form.get("name")
     amount = request.form.get("amount")
     price = request.form.get("price")
     cur.execute(f'INSERT INTO {str(username)+str(password)} VALUES(?,?,?)',(name,amount,price))
-    db.commit()
+    cart.commit()
     cur.close()
     return render_template("index.html")
 
 @app.route("/data")
 def data():
     if logged:
-        cur = db.cursor()
+        cur = cart.cursor()
         data = cur.execute(f"select * from {str(username)+str(password)}")
         data = data.fetchall()
         cur.close()
@@ -81,18 +98,13 @@ def data():
 @app.route("/remove/<item>",methods=["POST","GET"])
 def remove(item:str):
     if logged:
-        cur = db.cursor()
+        cur = cart.cursor()
         items = item.split(",")
         print(items)
         cur.execute(f"DELETE FROM {str(username)+str(password)} WHERE item=? and amount=? and price=?",(items[0],int(items[1]),int(float(items[2]))))
-        db.commit()
+        cart.commit()
         cur.close()
-
-        cur = db.cursor()
-        data = cur.execute(f"select * from {str(username)+str(password)}")
-        data = data.fetchall()
-        cur.close()
-        return render_template("data.html",item=data)
+        return redirect(url_for("data"))
     return render_template("login.html")
 
 
