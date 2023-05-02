@@ -19,14 +19,13 @@
   </p>
 </p>
 
-![Contributors](https://img.shields.io/github/contributors/Shevilll/ShoppingCart?color=dark-green) ![Forks](https://img.shields.io/github/forks/Shevilll/ShoppingCart?style=social) ![Stargazers](https://img.shields.io/github/stars/Shevilll/ShoppingCart?style=social) ![Issues](https://img.shields.io/github/issues/Shevilll/ShoppingCart) 
+![Contributors](https://img.shields.io/github/contributors/Shevilll/ShoppingCart?color=dark-green) ![Forks](https://img.shields.io/github/forks/Shevilll/ShoppingCart?style=social) ![Stargazers](https://img.shields.io/github/stars/Shevilll/ShoppingCart?style=social) ![Issues](https://img.shields.io/github/issues/Shevilll/ShoppingCart)
 
 ## About The Project
 
 Here is a basic Shopping Cart website built with Flask, Sqlite3 and HTML-CSS-JS.
 
 ## Getting Started
-
 
 ### Installation
 
@@ -37,6 +36,7 @@ https://github.com/Shevilll/ShoppingCart.git
 ```
 
 2. Run:
+
 ```sh
 pip3 install requirements.txt
 ```
@@ -48,9 +48,10 @@ See the [open issues](https://github.com/Shevilll/ShoppingCart/issues) for a lis
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-* If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/Shevilll/ShoppingCart/issues/new) to discuss it.
-* Please make sure you check your spelling and grammar.
-* Create individual PR for each suggestion.
+
+-   If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/Shevilll/ShoppingCart/issues/new) to discuss it.
+-   Please make sure you check your spelling and grammar.
+-   Create individual PR for each suggestion.
 
 ### Creating A Pull Request
 
@@ -62,5 +63,4 @@ Contributions are what make the open source community such an amazing place to b
 
 ## Authors
 
-* **Ahmad Faraz** - *Comp Sci Student* - [Ahmad Faraz](https://github.com/Shevilll/) - *Built this Project*
-
+-   **Ahmad Faraz** - _Comp Sci Student_ - [Ahmad Faraz](https://github.com/Shevilll/) - _Built this Project_

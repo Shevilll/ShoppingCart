@@ -1,33 +1,32 @@
-{% extends "layout.html" %}
-{% block title %}
-    <title>Cart</title>
-{% endblock %}
-
-{% block body %}
-    <div class="table">
-        {% if item %}
-            <table>
-                <thead>
-                    <th>Item 🍉</th>
-                    <th>Amount 🤔</th>
-                    <th>Price 💰</th>
-                    <th>Remove ❌</th>
-                </thead>
-                {% for i,j,k in item %}
-                    <tbody>
-                        <td>{{i}}</td>
-                        <td>{{j}}</td>
-                        <td>{{k}}</td>
-                        <form action="/remove/{{i}},{{j}},{{k}}" method="post">
-                            <td>
-                                <button style="border: 2px solid; border-radius: 20px;">❌</button>
-                            </td>
-                        </form>
-                    </tbody>
-                    {% endfor %}
-            </table>
-        {% else %}
-            <h1 style="text-align: center;">Your cart is EMPTY!</h1>
-        {% endif %}
-    </div>
+{% extends "layout.html" %} {% block title %}
+<title>Cart</title>
+{% endblock %} {% block body %}
+<div class="table">
+    {% if item %}
+    <table>
+        <thead>
+            <th>Item 🍉</th>
+            <th>Amount 🤔</th>
+            <th>Price 💰</th>
+            <th>Remove ❌</th>
+        </thead>
+        {% for i,j,k in item %}
+        <tbody>
+            <td>{{i}}</td>
+            <td>{{j}}</td>
+            <td>{{k}}</td>
+            <form action="/remove/{{i}},{{j}},{{k}}" method="post">
+                <td>
+                    <button style="border: 2px solid; border-radius: 20px">
+                        ❌
+                    </button>
+                </td>
+            </form>
+        </tbody>
+        {% endfor %}
+    </table>
+    {% else %}
+    <h1 style="text-align: center">Your cart is EMPTY!</h1>
+    {% endif %}
+</div>
 {% endblock %}

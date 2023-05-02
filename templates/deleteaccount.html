@@ -1,21 +1,34 @@
-{% extends "layout.html" %}
-
-{% block title %}
+{% extends "layout.html" %} {% block title %}
 <title>Login</title>
-{% endblock %}
-
-{% block body %}
+{% endblock %} {% block body %}
 <div id="input">
     {% if error %}
-        <div class="table">
-            <h1 style="text-align: center;">{{ error }}</h1>
-        </div>
+    <div class="table">
+        <h1 style="text-align: center">{{ error }}</h1>
+    </div>
     {% else %}
-        <form action="/delete" method="post">
-            <input class="input" type="text" name="dusername" autofocus placeholder="Enter Username 👤" required autocomplete="off">
-            <input class="input" type="password" min="0" name="dpassword" autofocus placeholder="Enter Password 🤐" required autocomplete="off">
-            <button id="add">Delete Account 🙁</button>
-        </form>
+    <form action="/delete" method="post">
+        <input
+            class="input"
+            type="text"
+            name="dusername"
+            autofocus
+            placeholder="Enter Username 👤"
+            required
+            autocomplete="off"
+        />
+        <input
+            class="input"
+            type="password"
+            min="0"
+            name="dpassword"
+            autofocus
+            placeholder="Enter Password 🤐"
+            required
+            autocomplete="off"
+        />
+        <button id="add">Delete Account 🙁</button>
+    </form>
     {% endif %}
 </div>
 {% endblock %}
